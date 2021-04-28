@@ -1,0 +1,25 @@
+
+2
+java:S1116;"Remove this empty statement.(ž¡¦›
+7
+java:S1116$"Remove this empty statement.(ôŸŽìúÿÿÿÿ
+<
+java:S1905J"&Remove this unnecessary cast to "int".(àôí’
+7
+java:S1116 "Remove this empty statement.(ôŸŽìúÿÿÿÿ
+…
+java:S1319o"oThe type of the "path" object should be an interface such as "List" rather than the implementation "ArrayList".(‹äÒÌ
+F
+java:S1128"0Remove this unused import 'java.io.PrintWriter'.(ÓÞÏÛ
+7
+java:S1116"Remove this empty statement.(ôŸŽìúÿÿÿÿ
+D
+java:S1068")Remove this unused "irfan" private field.(ú·àÓÿÿÿÿÿ
+^
+java:S2095Y"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(Þ“Ë
+[
+java:S20956"EUse try-with-resources or close this "Scanner" in a "finally" clause.(±†µŒ
+7
+java:S1116?"Remove this empty statement.(Åñ­õþÿÿÿÿ
+7
+java:S1116("Remove this empty statement.(ôŸŽìúÿÿÿÿ

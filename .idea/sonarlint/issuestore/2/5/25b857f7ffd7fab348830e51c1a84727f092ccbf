@@ -1,0 +1,10 @@
+
+>
+java:S1068"(Remove this unused "Cost" private field.(‚Ôå
+‹
+java:S1319o"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(š³Ã×ûÿÿÿÿ
+o
+java:S2293q"YReplace the type specification in this constructor call with the diamond operator ("<>").(€ªœ
+d	java:S116"ORename this field "Cost" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Ôå
+c	java:S100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç³æï
+l	java:S117…"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï“½ÿÿÿÿÿ
