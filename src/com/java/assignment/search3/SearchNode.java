@@ -1,4 +1,4 @@
-package com.java.assignment;
+
 /**
 *	Node in a state-space search
 *   variable costs case

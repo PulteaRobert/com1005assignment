@@ -1,4 +1,3 @@
-package com.java.assignment;
 /*
 *	Search.java - abstract class specialising to MapSearch etc
 * Phil Green 2013 version

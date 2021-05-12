@@ -1,4 +1,4 @@
-package com.java.assignment;
+
 /**
 *	State in a state-space search
 *	abstract class
