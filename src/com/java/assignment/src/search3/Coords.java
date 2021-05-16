@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * Coords.java
  *
@@ -27,5 +29,13 @@ public class Coords {
   public int gety() {
     return y;
   };
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Coords coords = (Coords) o;
+    return x == coords.x && y == coords.y;
+  }
 
 }
