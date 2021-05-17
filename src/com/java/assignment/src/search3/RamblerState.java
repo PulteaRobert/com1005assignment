@@ -51,9 +51,8 @@ public class RamblerState extends SearchState {
             cost = heightDiff <= 0 ? 1 : 1 + Math.abs(heightDiff);
             succs.add(new RamblerState(new Coords(pixel.gety(), pixel.getx() + 1), cost));
         }
-
         //South Step
-        if(pixel.gety() + 1 < map.getHeight()){
+        if(pixel.gety() + 1 < map.getDepth()){
             int heightDiff = tpmap[pixel.getx()][pixel.gety() + 1] - tpmap[pixel.getx()][pixel.gety()];
             cost = heightDiff <= 0 ? 1 : 1 + Math.abs(heightDiff);
             succs.add(new RamblerState(new Coords(pixel.gety() + 1, pixel.getx()), cost));
