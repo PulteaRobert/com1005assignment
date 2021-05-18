@@ -9,7 +9,7 @@ public class RunRamblerAStar{
 
     public static void main(String[] arg) {
 
-        TerrainMap map1 = new TerrainMap("src/tmc.pgm");
+        TerrainMap map1 = new TerrainMap("src/search3/tmc.pgm");
         Random rand = new Random();
         List<Coords> testCases = new ArrayList<>();
 
