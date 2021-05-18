@@ -111,4 +111,5 @@ public class TerrainMap {
     for (Coords c : path)
       tmap[c.gety()][c.getx()] = 255;
   }
+
 }

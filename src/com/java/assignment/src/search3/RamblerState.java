@@ -1,8 +1,3 @@
-/*
- *	State in a map search
- *	Phil Green 2013 version
- * Heidi Christensen (heidi.christensen@sheffield.ac.uk) 2021 version
- */
 
 import java.util.*;
 
@@ -12,9 +7,10 @@ public class RamblerState extends SearchState {
     private Coords pixel;
 
     // constructor
-    public RamblerState(Coords coords, int lc) {
+    public RamblerState(Coords coords, int lc, int ec) {
         pixel = coords;
         localCost = lc;
+        estRemCost = ec;
     }
 
     // accessor
@@ -26,7 +22,7 @@ public class RamblerState extends SearchState {
     // goalPredicate
     public boolean goalPredicate(Search searcher) {
         RamblerSearch ramblerSearch = (RamblerSearch) searcher;
-        Coords goal = ramblerSearch.getGoal(); // get target city
+        Coords goal = ramblerSearch.getGoal();
         return pixel.equals(goal);
     }
 
@@ -42,27 +38,31 @@ public class RamblerState extends SearchState {
         if(pixel.gety() - 1 >= 0) {
             int heightDiff = tpmap[pixel.getx()][pixel.gety() - 1] - tpmap[pixel.getx()][pixel.gety()];
             cost = heightDiff <= 0 ? 1 : 1 + Math.abs(heightDiff);
-            succs.add(new RamblerState(new Coords(pixel.gety() - 1, pixel.getx()), cost));
+            Coords point = new Coords(pixel.gety() - 1, pixel.getx());
+            succs.add(new RamblerState(point, cost, estDistance(searcher, point)));
         }
 
         //East Step
         if(pixel.getx() + 1 < map.getWidth()){
             int heightDiff = tpmap[pixel.getx() + 1][pixel.gety()] - tpmap[pixel.getx()][pixel.gety()];
             cost = heightDiff <= 0 ? 1 : 1 + Math.abs(heightDiff);
-            succs.add(new RamblerState(new Coords(pixel.gety(), pixel.getx() + 1), cost));
+            Coords point = new Coords(pixel.gety(), pixel.getx() + 1);
+            succs.add(new RamblerState(point, cost, estDistance(searcher, point)));
         }
         //South Step
         if(pixel.gety() + 1 < map.getDepth()){
             int heightDiff = tpmap[pixel.getx()][pixel.gety() + 1] - tpmap[pixel.getx()][pixel.gety()];
             cost = heightDiff <= 0 ? 1 : 1 + Math.abs(heightDiff);
-            succs.add(new RamblerState(new Coords(pixel.gety() + 1, pixel.getx()), cost));
+            Coords point = new Coords(pixel.gety() + 1, pixel.getx());
+            succs.add(new RamblerState(point, cost, estDistance(searcher, point)));
         }
 
         //West Step
         if(pixel.getx() - 1 >= 0){
             int heightDiff = tpmap[pixel.getx() - 1][pixel.gety()] - tpmap[pixel.getx()][pixel.gety()];
             cost = heightDiff <= 0 ? 1 : 1 + Math.abs(heightDiff);
-            succs.add(new RamblerState(new Coords(pixel.gety(), pixel.getx() - 1), cost));
+            Coords point = new Coords(pixel.gety(), pixel.getx() - 1);
+            succs.add(new RamblerState(point, cost, estDistance(searcher, point)));
         }
 
 
@@ -86,6 +86,12 @@ public class RamblerState extends SearchState {
     // toString
     public String toString() {
         return ("Pixel coord:(" + pixel.getx() + " , " + pixel.gety() + ");");
+    }
+
+    public static int estDistance(Search searcher, Coords point){
+        RamblerSearch ramblerSearch = (RamblerSearch) searcher;
+        Coords goal = ramblerSearch.getGoal();
+        return Math.abs(point.gety() - goal.gety()) + Math.abs(point.getx() - goal.getx());
     }
 
 

@@ -1,11 +1,3 @@
-/*
- *	Search.java - abstract class specialising to MapSearch etc
- *	This version supports A*
- *	See //A* for changes
- *	Phil Green 2013 version
- *  Heidi Christensen (heidi.christensen@sheffield.ac.uk) 2021 version
-*/
-
 import java.util.*;
 
 public abstract class Search {
@@ -157,7 +149,7 @@ public abstract class Search {
   //A* - if node found, remember it in old_node
   private boolean onClosed(SearchNode newNode){
 	  boolean ans = false;
-	  Iterator<SearchNode> ic = closed.iterator();
+	  Iterator ic = closed.iterator();
     while ((ic.hasNext())&& !ans){ //there can only be one node on open with same state
       SearchNode closedNode = (SearchNode) ic.next();
       if (newNode.sameState(closedNode)) {
@@ -172,7 +164,7 @@ public abstract class Search {
   // if node found, remember it in old_node
   private boolean onOpen(SearchNode newNode){
   	boolean ans = false;
-    Iterator<SearchNode> ic = open.iterator();
+    Iterator ic = open.iterator();
     while ((ic.hasNext())&& !ans){ //there can only be one node on open with same state
       SearchNode openNode = (SearchNode) ic.next();
       if (newNode.sameState(openNode)) {
@@ -216,13 +208,13 @@ public abstract class Search {
     //change from search2
     private void branchAndBound(){
 
-      Iterator<SearchNode> i = open.iterator();
+      Iterator i = open.iterator();
       SearchNode minCostNode=(SearchNode) i.next();
-        while (i.hasNext()) {
-          SearchNode n=(SearchNode) i.next();
-          if (n.getGlobalCost()<minCostNode.getGlobalCost()){
-            minCostNode=n;};
-          }
+      for (;i.hasNext();){
+        SearchNode n=(SearchNode) i.next();
+        if (n.getGlobalCost()<minCostNode.getGlobalCost()){
+          minCostNode=n;};
+        }
 
         currentNode=minCostNode;
         open.remove(minCostNode);
@@ -232,15 +224,15 @@ public abstract class Search {
 
 	    private void AStar(){
 
-        Iterator<SearchNode> i = open.iterator();
+        Iterator i = open.iterator();
         SearchNode minCostNode=(SearchNode) i.next();
-            while (i.hasNext()) {
-              SearchNode n=(SearchNode) i.next();
-              if (n.getestTotalCost()<minCostNode.getestTotalCost()){
-                minCostNode=n;};
-              }
+        for (;i.hasNext();){
+          SearchNode n=(SearchNode) i.next();
+          if (n.getestTotalCost()<minCostNode.getestTotalCost()){
+            minCostNode=n;};
+          }
 
-            currentNode=minCostNode;
+        currentNode=minCostNode;
         open.remove(minCostNode);
       }
 
@@ -249,7 +241,7 @@ public abstract class Search {
       private String reportSuccess(){
 
 	    SearchNode n = currentNode;
-	    StringBuilder buf = new StringBuilder(n.toString());
+	    StringBuffer buf = new StringBuffer(n.toString());
 	    int plen=1;
 
 	    while (n.getParent() != null){

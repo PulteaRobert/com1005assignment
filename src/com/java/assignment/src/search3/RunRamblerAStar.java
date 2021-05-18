@@ -5,11 +5,11 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class RunRamblerBB{
+public class RunRamblerAStar{
 
     public static void main(String[] arg) {
 
-        TerrainMap map1 = new TerrainMap("src/search3/tmc.pgm");
+        TerrainMap map1 = new TerrainMap("src/tmc.pgm");
         Random rand = new Random();
         List<Coords> testCases = new ArrayList<>();
 
@@ -26,7 +26,7 @@ public class RunRamblerBB{
         SearchState[] initStates = new RamblerState[10];
 
         for (int i = 0; i < initStates.length; i++) {
-            initStates[i] = new RamblerState(testCases.get(i), 0);
+            initStates[i] = new RamblerState(testCases.get(i), 0, RamblerState.estDistance(searchers.get(i), testCases.get(i)));
         }
 
         double[] results = new double[10];
