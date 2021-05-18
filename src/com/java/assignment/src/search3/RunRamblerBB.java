@@ -20,8 +20,10 @@ public class RunRamblerBB{
 
         List<RamblerSearch> searchers = new ArrayList<>();
 
+        Coords goal = new Coords(rand.nextInt(15), rand.nextInt(15));
+
         for (int i = 0; i < 10; i++) {
-            searchers.add(new RamblerSearch(map1, new Coords(15, 15)));
+            searchers.add(new RamblerSearch(map1, goal));
         }
         SearchState[] initStates = new RamblerState[10];
 
@@ -36,7 +38,7 @@ public class RunRamblerBB{
         }
 
         for (int i = 0; i < results.length; i++) {
-            sb.append(String.format("For the init state (%s, %s) with the goal (15, 15) we have an efficiency of ", testCases.get(i).getx(), testCases.get(i).gety()));
+            sb.append(String.format("For the init state (%s, %s) with the goal (%s, %s) we have an efficiency of ", testCases.get(i).getx(), testCases.get(i).gety(), goal.getx(), goal.gety()));
             sb.append(results[i]);
             sb.append('\n');
         }
