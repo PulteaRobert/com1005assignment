@@ -187,10 +187,18 @@ public abstract class Search {
    //Selection Strategies
    private void selectNode(String strat) {
        switch (strat) {
-           case "depthFirst" -> depthFirst();
-           case "breadthFirst" -> breadthFirst();
-           case "branchAndBound" -> branchAndBound();
-           default -> AStar();
+           case "depthFirst":
+               depthFirst();
+               break;
+           case "breadthFirst":
+               breadthFirst();
+               break;
+           case "branchAndBound":
+               branchAndBound();
+               break;
+           default:
+               AStar();
+               break;
        }
    }
 
